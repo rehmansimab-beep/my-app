@@ -1,16 +1,27 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Text } from "@react-navigation/elements";
+import { useRouter } from "expo-router";
+import { useState } from "react";
+import { Pressable, StyleSheet, TextInput, View } from "react-native";
+
+
 
 const AddNoteScreen = () => {
+    const router =useRouter();
+    const [note, setNote] = useState("");
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Add note</Text>
 
-      <TextInput placeholder="Enter note" style={styles.input} />
+      <TextInput placeholder="Enter note" style={styles.input} 
+      value={note}
+      onChangeText={setNote}
+      />
+    
       <Pressable style={styles.button}>
-        <Text style={styles.buttontext}>Save</Text>
-      </Pressable>
+        <Text style={styles.button}>Save</Text>
+    </Pressable>
      </View>
-  );
+    );
   };
 
   export default AddNoteScreen;
